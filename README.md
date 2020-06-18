@@ -1,46 +1,43 @@
 
-## Scaffold Simple
+## 概述
 
-> A TypeScript simple template
+> PC端网站模板
 
 ## 使用
 
 ```bash
 # 安装依赖
-$ npm install
+$ npm install 
+$ yarn install
 
 # 启动服务
 $ npm start  # visit http://localhost:3333
+$ yarn run start  # visit http://localhost:3333
 ```
 
-[More docs](https://ice.work/docs/guide/about).
+[更多](https://ice.work/docs/guide/about).
 
 ## 目录
 
 ```md
-├── build/                         # 构建产物
+├── .ice/                          # 运行时生成的临时目录
+├── build/                         # 构建产物目录
 ├── mock/                          # 本地模拟数据
-│   ├── index.[j,t]s
+│   ├── index.js
 ├── public/
 │   ├── index.html                 # 应用入口 HTML
 │   └── favicon.png                # Favicon
-├── src/                           # 源码路径
+├── src/                           # 源码
 │   ├── components/                # 自定义业务组件
-│   │   └── Guide/
-│   │       ├── index.[j,t]sx
-│   │       └── index.module.scss
+│   ├── layouts/                   # 布局组件
 │   ├── pages/                     # 页面
-│   │   └── index.tsx/
+│   ├── models/                    # 应用级数据状态
 │   ├── global.scss                # 全局样式
-│   └── app.[j,t]s[x]              # 应用入口脚本
-├── README.md
+│   ├── config.ts                  # 环境配置
+│   ├── routes.ts                  # 路由配置
+│   └── app.ts                     # 应用入口
+│
+├── build.json
 ├── package.json
-├── .editorconfig
-├── .eslintignore
-├── .eslintrc.[j,t]s
-├── .gitignore
-├── .stylelintignore
-├── .stylelintrc.[j,t]s
-├── .gitignore
-└── [j,t]sconfig.json
+└── tsconfig.json
 ```
