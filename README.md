@@ -31,7 +31,7 @@ $ yarn run start  # visit http://localhost:3333
 │   ├── components/                # 自定义业务组件
 │   ├── layouts/                   # 布局组件
 │   ├── pages/                     # 页面
-│   ├── models/                    # 应用级数据状态
+│   ├── models/                    # 应用级数据状态 这里储存全局状态数据
 │   ├── global.scss                # 全局样式
 │   ├── config.ts                  # 环境配置
 │   ├── routes.ts                  # 路由配置
