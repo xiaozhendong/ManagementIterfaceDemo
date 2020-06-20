@@ -30,7 +30,7 @@ export const config={
         {
           name: '文章列表',
           icon: 'ol-list',
-          path: '/ArticleList',
+          path: 'IceStoreTest',
           id: 'Menu_p834l',
         },
         {

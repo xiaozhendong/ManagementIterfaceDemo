@@ -29,7 +29,7 @@ function getDefaultOpenKeys(location = {}) {
  * 获取菜单项数据
  */
 function getNavMenuItems(menusData,collapse) {
-  tag=tag+1;
+
   if (!menusData) {
     return [];
   }
@@ -37,7 +37,7 @@ function getNavMenuItems(menusData,collapse) {
   return menusData
     .filter(item => item.name && !item.hideInMenu)
     .map((item, index) => {
-      return getSubMenuOrItem(item, index+tag,collapse)
+      return getSubMenuOrItem(item, index, collapse)
     });
 }
 

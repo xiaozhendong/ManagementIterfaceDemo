@@ -4,11 +4,14 @@ import AsideNavLayout from "@/layouts/AsideNavLayout";
 import TopNavLayout from "@/layouts/TopNavLayout";
 import BlankLayout from "@/layouts/BlankLayout";
 import TopAndHeaderNavLayout from "@/layouts/TopAndHeaderNavLayout";
-const Home =lazy(()=>import(/* webpackChunkName: `${home}` */'@/pages/Home') )
-const Test =lazy(()=>import(/* webpackChunkName: `${home}` */'@/pages/Test') )
-const NotFound =lazy(()=>import(/* webpackChunkName: `${home}` */'@/pages/NotFound') )
-const Forbidden =lazy(()=>import(/* webpackChunkName: `${home}` */'@/pages/Forbidden') )
-const Error =lazy(()=>import(/* webpackChunkName: `${home}` */'@/pages/Error') )
+
+const Home = lazy(() => import('@/pages/Home'))
+const Test = lazy(() => import('@/pages/Test'))
+const IceStoreTest = lazy(() => import('@/pages/IceStoreTest'))
+const NotFound = lazy(() => import('@/pages/NotFound'))
+const Forbidden = lazy(() => import('@/pages/Forbidden'))
+const Error = lazy(() => import('@/pages/Error'))
+
 const routerConfig = [
   {
     path: '/notfound',
@@ -41,6 +44,10 @@ const routerConfig = [
       },{
       path: '/test',
         component: Test
+      },
+      {
+        path: "/IceStoreTest",
+        component: IceStoreTest
       },
       {
         path: '/*',
