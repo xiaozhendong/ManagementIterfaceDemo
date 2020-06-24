@@ -11,6 +11,7 @@ const IceStoreTest = lazy(() => import('@/pages/IceStoreTest'))
 const NotFound = lazy(() => import('@/pages/NotFound'))
 const Forbidden = lazy(() => import('@/pages/Forbidden'))
 const Error = lazy(() => import('@/pages/Error'))
+const Login = lazy(() => import('@/pages/Login'))
 
 const routerConfig = [
   {
@@ -24,20 +25,27 @@ const routerConfig = [
     path: '/error',
     component: BlankLayout,
     children: [
-      { component: Error },
+      {component: Error},
     ],
+  },
+  {
+    path: "/login",
+    component: BlankLayout,
+    children: [
+      {component: Login}
+    ]
   },
   {
     path: '/forbidden',
     component: BlankLayout,
     children: [
-      { component: Forbidden },
+      {component: Forbidden},
     ],
   },
   {
     path: '/',
     component: TopAndHeaderNavLayout,
-    children:[
+    children: [
       {
         path:'/home',
         component:Home

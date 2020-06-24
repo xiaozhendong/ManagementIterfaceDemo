@@ -3,15 +3,29 @@
     ["build-plugin-fusion", {
       "themePackage": "@icedesign/theme"
     }],
-    ["build-plugin-css-assets-local", {
-      "outputPath": "assets",
-      "relativeCssPath": "../"
-    }],
-    ["build-plugin-antd", {
-      "libraryDirectory": "es", "style": true
-    }],
-    ["build-plugin-moment-locales", {
-      "locales": ["zh-cn", "en-au"]
-    }]
-  ]
+    [
+      "build-plugin-css-assets-local",
+      {
+        "outputPath": "assets",
+        "relativeCssPath": "../"
+      }
+    ],
+    [
+      "build-plugin-antd",
+      {
+        "libraryDirectory": "es",
+        "style": true
+      }
+    ],
+    [
+      "build-plugin-moment-locales",
+      {
+        "locales": [
+          "zh-cn",
+          "en-au"
+        ]
+      }
+    ]
+  ],
+  "publicPath": "/public/"
 }
