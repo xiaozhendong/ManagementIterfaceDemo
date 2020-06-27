@@ -1,26 +1,78 @@
 import React from "react";
 import styles from './index.module.scss';
-import {Form, Input, Button, Checkbox} from 'antd';
-import {Link} from 'ice';
-import {UserOutlined, LockTwoTone} from '@ant-design/icons';
-import axios from 'axios'
+import {Button, Checkbox, Form, Input} from 'antd';
+import {Link, logger} from 'ice';
+import {LockTwoTone, UserOutlined} from '@ant-design/icons';
+import {fetchData} from '@/utils/httpUtil';
+import Cookies from 'js-cookie'
 
 const layout = {
 
   wrapperCol: {span: 24},
 };
 
-const onFinish = async values => {
-
-  let res = await axios.get(`/api/auth/username/${values.username}/password/${values.password}`)
-  console.log(values)
-};
-
-const onFinishFailed = errorInfo => {
-  console.log('Failed:', errorInfo);
-};
 
 class LoginForm extends React.Component {
+  constructor(props) {
+    super(props);
+    let initialValues = {}
+    if (Cookies.get("remember") != undefined) {
+      let remember = Cookies.get("remember")
+      let UP = JSON.parse(Cookies.get("U&P"))
+      console.log({
+        remember,
+        ...UP
+      })
+
+      initialValues = {
+        remember: true,
+        ...UP
+      }
+
+
+    }
+    this.state = {
+      loading: false,
+      initialValues: initialValues
+    }
+  }
+
+  componentDidMount() {
+
+  }
+
+  onFinish = async (values) => {
+    this.setState({
+      loading: true
+    })
+
+    let res = await fetchData('/api/auth', "post", values)
+    if (res.status === "SUCCESS") {
+
+      Cookies.set("token", res.data.token, {expires: 7})
+      if (values.remember === true) {
+        Cookies.set("remember", true)
+        Cookies.set("U&P", JSON.stringify(values))
+      } else {
+        if (Cookies.get("remember") != undefined) {
+          Cookies.remove("remember")
+          Cookies.remove("U&P")
+        }
+
+      }
+    }
+    this.setState({
+      loading: false
+    }, () => {
+      console.log(Cookies.get("token"))
+    })
+
+
+  };
+
+  onFinishFailed = (errorInfo) => {
+    logger.info('Failed:', errorInfo);
+  };
 
   // @ts-ignore
   render() {
@@ -38,9 +90,9 @@ class LoginForm extends React.Component {
           <Form
             {...layout}
             name="basic"
-            initialValues={{remember: true}}
-            onFinish={onFinish}
-            onFinishFailed={onFinishFailed}
+            initialValues={this.state.initialValues}
+            onFinish={this.onFinish}
+            onFinishFailed={this.onFinishFailed}
           >
             <Form.Item
 
@@ -64,12 +116,14 @@ class LoginForm extends React.Component {
             </Form.Item>
 
             <Form.Item>
-              <Button type="primary" htmlType="submit" size="large" className={styles.loginFromButton}>
+              <Button type="primary" htmlType="submit" size="large" className={styles.loginFromButton}
+                      loading={this.state.loading}>
                 登录
               </Button>
             </Form.Item>
           </Form>
-          <div style={{textAlign: 'right'}}><Link>注册</Link><span> | </span><Link>忘记密码</Link></div>
+          <div style={{textAlign: 'right'}}><Link to={'/register'}>注册</Link><span> | </span><Link
+            to={'/forgetpassword'}>忘记密码</Link></div>
         </div>
       </div>
     )

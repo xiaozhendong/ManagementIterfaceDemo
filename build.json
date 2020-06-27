@@ -1,8 +1,17 @@
 {
+  "proxy": {
+    "/api": {
+      "enable": true,
+      "target": "http://127.0.0.1:7001"
+    }
+  },
   "plugins": [
-    ["build-plugin-fusion", {
-      "themePackage": "@icedesign/theme"
-    }],
+    [
+      "build-plugin-fusion",
+      {
+        "themePackage": "@icedesign/theme"
+      }
+    ],
     [
       "build-plugin-css-assets-local",
       {
