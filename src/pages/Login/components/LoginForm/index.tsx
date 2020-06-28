@@ -80,13 +80,15 @@ class LoginForm extends React.Component {
       <div>
 
         <div className={styles.loginFrom}>
-          <div className={styles.antdprolayoutsuserlayoutheader}>
-            <Link to="/"><img alt="logo" className={styles.antdprolayoutsuserlayoutlogo}
-                              src="https://preview.pro.ant.design/static/logo.f0355d39.svg"/>
-              <span className={styles.antdprolayoutsuserlayouttitle}>Ant Design</span>
-            </Link>
+          <div className={styles.tagFadeIn}>
+            <div className={styles.antdprolayoutsuserlayoutheader}>
+              <Link to="/"><img alt="logo" className={styles.antdprolayoutsuserlayoutlogo}
+                                src="https://preview.pro.ant.design/static/logo.f0355d39.svg"/>
+                <span className={styles.antdprolayoutsuserlayouttitle}>Ant Design</span>
+              </Link>
+            </div>
+            <div className={styles.antdprolayoutsuserlayoutdesc}>Ant Design 是西湖区最具影响力的 Web 设计规范</div>
           </div>
-          <div className={styles.antdprolayoutsuserlayoutdesc}>Ant Design 是西湖区最具影响力的 Web 设计规范</div>
           <Form
             {...layout}
             name="basic"
