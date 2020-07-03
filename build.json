@@ -6,6 +6,7 @@
     }
   },
   "plugins": [
+
     [
       "build-plugin-fusion",
       {
@@ -34,7 +35,8 @@
           "en-au"
         ]
       }
-    ]
+    ],
+    "build-plugin-ice-auth"
   ],
   "publicPath": "/public/"
 }

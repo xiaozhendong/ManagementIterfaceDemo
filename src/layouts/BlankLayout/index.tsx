@@ -1,7 +1,13 @@
 import * as React from 'react';
 
+function BlankLayout({children}: { children: React.ReactNode }) {
+  return <div style={{backgroundColor: "#f0f0f0"}}>
 
-class BlankLayout extends React.Component {
+    {children}
+  </div>;
+}
+
+/*class BlankLayout extends React.Component {
   constructor(props) {
     super(props)
   }
@@ -11,12 +17,9 @@ class BlankLayout extends React.Component {
   }
 
   render(): React.ReactElement<any, string | React.JSXElementConstructor<any>> | string | number | {} | React.ReactNodeArray | React.ReactPortal | boolean | null | undefined {
-    return <div style={{backgroundColor:"#f0f0f0"}}>
 
-      {this.props.children}
-    </div>;
   }
-}
+}*/
 
 
 export default BlankLayout;

@@ -5,7 +5,7 @@ import TopNavLayout from "@/layouts/TopNavLayout";
 import BlankLayout from "@/layouts/BlankLayout";
 import TopAndHeaderNavLayout from "@/layouts/TopAndHeaderNavLayout";
 
-const Home = lazy(() => import('@/pages/Home'))
+const Home = lazy(() => import(/* webpackChunkName: home */'@/pages/Home'))
 const Test = lazy(() => import('@/pages/Test'))
 const IceStoreTest = lazy(() => import('@/pages/IceStoreTest'))
 const NotFound = lazy(() => import('@/pages/NotFound'))

@@ -1,7 +1,7 @@
 import React from "react";
 import styles from './index.module.scss';
 import {Button, Checkbox, Form, Input} from 'antd';
-import {Link, logger} from 'ice';
+import {Link, logger, withAuth, history} from 'ice';
 import {LockTwoTone, UserOutlined} from '@ant-design/icons';
 import {fetchData} from '@/utils/httpUtil';
 import Cookies from 'js-cookie'
@@ -47,9 +47,11 @@ class LoginForm extends React.Component {
     })
 
     let res = await fetchData('/api/auth', "post", values)
+
     if (res.status === "SUCCESS") {
 
       Cookies.set("token", res.data.token, {expires: 7})
+      Cookies.set("keys", res.data.keys, {expires: 7})
       if (values.remember === true) {
         Cookies.set("remember", true)
         Cookies.set("U&P", JSON.stringify(values))
@@ -60,6 +62,10 @@ class LoginForm extends React.Component {
         }
 
       }
+      const {setAuth} = this.props;
+      setAuth({admin: true});
+      history.push("/home")
+
     }
     this.setState({
       loading: false
@@ -133,4 +139,4 @@ class LoginForm extends React.Component {
 }
 
 
-export default LoginForm
+export default withAuth(LoginForm)
